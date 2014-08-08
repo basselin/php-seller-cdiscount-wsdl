@@ -7,7 +7,8 @@ https://seller.cdiscount.com
 
 ## Exemple d'utilisation
 ```php
-$cdiscount = new CDiscountWsdl('identifiant', 'pa$$word');
+require './CDiscountWsdl.php';
+$cdiscount = new CDiscountWsdl('login', 'pa$$word');
 var_dump($cdiscount->submitProductPackage('http://mon.domaine/products.zip'));
 ```
 
