@@ -1,6 +1,6 @@
 <?php
 /**
- * @link      https://github.com/basselin/php-cdiscount-wsdl
+ * @link      https://github.com/basselin/php-seller-cdiscount-wsdl
  * @copyright (c) 2014, Benoit Asselin contact(at)ab-d.fr
  * @license   MIT Licence
  */
