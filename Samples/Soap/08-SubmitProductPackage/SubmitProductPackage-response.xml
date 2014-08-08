@@ -1,0 +1,17 @@
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+   <s:Body>
+      <SubmitProductPackageResponse xmlns="http://www.cdiscount.com">
+         <SubmitProductPackageResult xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+            <ErrorMessage i:nil="true" xmlns="http://schemas.datacontract.org/2004/07/Cdiscount.Framework.Core.Communication.Messages"/>
+            <OperationSuccess xmlns="http://schemas.datacontract.org/2004/07/Cdiscount.Framework.Core.Communication.Messages">true</OperationSuccess>
+            <ErrorList/>
+            <SellerLogin>login</SellerLogin>
+            <TokenId>???</TokenId>
+            <NumberOfErrors>0</NumberOfErrors>
+            <PackageId>242</PackageId>
+            <PackageIntegrationStatus i:nil="true"/>
+            <ProductLogList i:nil="true"/>
+         </SubmitProductPackageResult>
+      </SubmitProductPackageResponse>
+   </s:Body>
+</s:Envelope>
