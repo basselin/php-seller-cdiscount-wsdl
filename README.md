@@ -1,6 +1,16 @@
-# PHP CDiscount WSDL
+# PHP Seller CDiscount WSDL
 
-Classe CDiscount Seller en cours de développement...
+Classe Seller CDiscount en cours de développement...
+
+https://seller.cdiscount.com
+
+
+## Exemple d'utilisation
+```php
+$cdiscount = new CDiscountWsdl('identifiant', 'pa$$word');
+var_dump($cdiscount->submitProductPackage('http://mon.domaine/products.zip'));
+```
+
 
 ## Modules PHP
 
