@@ -171,22 +171,22 @@ class CDiscountWsdl
     }
 
     /**
-     * Demander la creation d'un ensemble de produits
-     * @param string $zipPath
+     * Soumettre les offres (01)
+     * @param string $zipFileFullPath
      * @return stdClass
      */
-    public function submitProductPackage($zipPath)
+    public function submitOfferPackage($zipFileFullPath)
     {
         $this->lastResult = null;
         $params = array(
             'headerMessage' => $this->getHeaderMessage(),
-            'productPackageRequest' => $this->array2object(array(
-                'ZipFileFullPath' => $zipPath,
+            'offerPackageRequest' => $this->array2object(array(
+                'ZipFileFullPath' => $zipFileFullPath,
             )),
         );
 
         try {
-            $this->lastResult = $this->getSoap()->SubmitProductPackage($params);
+            $this->lastResult = $this->getSoap()->SubmitOfferPackage($params);
         } catch (SoapFault $exception) {
             echo '<div class="alert alert-danger">' . $exception->getMessage() . '</div>';
         }
@@ -194,7 +194,7 @@ class CDiscountWsdl
     }
 
     /**
-     * Arborescence
+     * Arborescence (07)
      * @return stdClass
      */
     public function getAllowedCategoryTree()
@@ -213,18 +213,22 @@ class CDiscountWsdl
     }
 
     /**
-     * Liste des Model
+     * Demander la creation d'un ensemble de produits (08)
+     * @param string $zipFileFullPath
      * @return stdClass
      */
-    public function getAllModelList()
+    public function submitProductPackage($zipFileFullPath)
     {
         $this->lastResult = null;
         $params = array(
             'headerMessage' => $this->getHeaderMessage(),
+            'productPackageRequest' => $this->array2object(array(
+                'ZipFileFullPath' => $zipFileFullPath,
+            )),
         );
 
         try {
-            $this->lastResult = $this->getSoap()->GetAllModelList($params);
+            $this->lastResult = $this->getSoap()->SubmitProductPackage($params);
         } catch (SoapFault $exception) {
             echo '<div class="alert alert-danger">' . $exception->getMessage() . '</div>';
         }
@@ -232,7 +236,7 @@ class CDiscountWsdl
     }
 
     /**
-     * Liste des Model
+     * Liste des Model (11)
      * @param string $categoryCode
      * @return stdClass
      */
@@ -250,6 +254,25 @@ class CDiscountWsdl
 
         try {
             $this->lastResult = $this->getSoap()->GetModelList($params);
+        } catch (SoapFault $exception) {
+            echo '<div class="alert alert-danger">' . $exception->getMessage() . '</div>';
+        }
+        return $this->lastResult;
+    }
+
+    /**
+     * Liste des Model (13)
+     * @return stdClass
+     */
+    public function getAllModelList()
+    {
+        $this->lastResult = null;
+        $params = array(
+            'headerMessage' => $this->getHeaderMessage(),
+        );
+
+        try {
+            $this->lastResult = $this->getSoap()->GetAllModelList($params);
         } catch (SoapFault $exception) {
             echo '<div class="alert alert-danger">' . $exception->getMessage() . '</div>';
         }
