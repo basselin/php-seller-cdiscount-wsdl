@@ -1,7 +1,7 @@
 <?php
 /**
  * @link      https://github.com/basselin/php-seller-cdiscount-wsdl
- * @copyright (c) 2014, Benoit Asselin contact(at)ab-d.fr
+ * @copyright (c) 2014-2015, Benoit Asselin contact(at)ab-d.fr
  * @license   MIT Licence
  */
 
@@ -9,13 +9,13 @@ class CDiscountWsdl
 {
     /**
      * URL du token
-     * @return string
+     * @const string
      */
     const URL = 'https://sts.cdiscount.com/users/httpIssue.svc/?realm=https://wsvc.cdiscount.com/MarketplaceAPIService.svc';
 
     /**
      * URL du webservice
-     * @return string
+     * @const string
      */
     const WSDL = 'https://wsvc.cdiscount.com/MarketplaceAPIService.svc?wsdl';
 
@@ -56,7 +56,7 @@ class CDiscountWsdl
 
     /**
      * Conversion des tableaux en objets de maniere recursive
-     * @param array $array
+     * @param  array $array
      * @return stdClass
      */
     protected function array2object(array $array)
@@ -95,7 +95,7 @@ class CDiscountWsdl
     }
 
     /**
-     * @param string $login
+     * @param  string $login
      * @return CDiscountWsdl
      */
     public function setLogin($login)
@@ -105,7 +105,7 @@ class CDiscountWsdl
     }
 
     /**
-     * @param string $passw
+     * @param  string $passw
      * @return CDiscountWsdl
      */
     public function setPassw($passw)
@@ -120,7 +120,7 @@ class CDiscountWsdl
     public function getSoap()
     {
         if (!$this->soap) {
-            $this->soap = new SoapClient($this::WSDL);
+            $this->soap = new SoapClient(static::WSDL);
         }
         return $this->soap;
     }
@@ -144,7 +144,7 @@ class CDiscountWsdl
         }
 
         $this->token = false;
-        $url = parse_url($this::URL);
+        $url = parse_url(static::URL);
         $auth = base64_encode($this->login . ':' . $this->passw);
         $fp = @fsockopen('ssl://' . $url['host'], 443, $errno, $errstr, 30);
         if (!$fp) {
@@ -172,7 +172,7 @@ class CDiscountWsdl
 
     /**
      * Soumettre les offres (01)
-     * @param string $zipFileFullPath
+     * @param  string $zipFileFullPath
      * @return stdClass
      */
     public function submitOfferPackage($zipFileFullPath)
@@ -214,7 +214,7 @@ class CDiscountWsdl
 
     /**
      * Demander la creation d'un ensemble de produits (08)
-     * @param string $zipFileFullPath
+     * @param  string $zipFileFullPath
      * @return stdClass
      */
     public function submitProductPackage($zipFileFullPath)
@@ -237,7 +237,7 @@ class CDiscountWsdl
 
     /**
      * Liste des Model (11)
-     * @param string $categoryCode
+     * @param  string $categoryCode
      * @return stdClass
      */
     public function getModelList($categoryCode)
