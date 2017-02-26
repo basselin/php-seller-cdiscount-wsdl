@@ -1,0 +1,10 @@
+{
+    "name": "basselin/php-seller-cdiscount-wsdl",
+    "description": "Classe Seller CDiscountWsdl permettant de soumettre des offres et des produits au format zip.",
+    "type": "library",
+    "keywords": ["cdiscount", "gosport"],
+    "license": "MIT",
+    "autoload": {
+        "classmap": ["CDiscountWsdl.php", "GoSportWsdl.php"]
+    }
+}
